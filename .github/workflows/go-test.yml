@@ -23,7 +23,7 @@ jobs:
       
     - name: Get dependencies
       run: |
-        go get -v -t -d ./...
+        go mod init
 
     - name: Test
       run: go test -v ./server/test
