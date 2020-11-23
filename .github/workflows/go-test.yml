@@ -22,10 +22,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Get dependencies
-      run: cd server
-      
-    - name: Get dependencies
-      run: pwd
+      run: cd server && pwd
       
     - name: Test
       run: go test -v ./server/test
