@@ -23,7 +23,7 @@ jobs:
       
     - name: Get dependencies
       run: |
-        go get
+      ls -l
 
     - name: Test
       run: go test -v ./server/test
