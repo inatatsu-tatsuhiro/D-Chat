@@ -1,31 +1,24 @@
 name: GoTest
-
 on:
   push:
-    branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
+    tags:
+      - v*
 
 jobs:
-
-  build:
-    name: Build
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
-
-    - name: Set up Go 1.x
-      uses: actions/setup-go@v2
+    - name: Set up Go 1.13
+      uses: actions/setup-go@v1
       with:
-        go-version: ^1.13
+        go-version: 1.13
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v2
-    
-    - name: go get 
-      run: go get github.com/golang/mock/gomock 
-      
+      uses: actions/checkout@v1
+
     - name: Get dependencies
-      run: cd server && go get -v -t -d ./...
-      
-    - name: Test
-      run: go test -v ./server/test
+      run: go get -v -t -d ./...
+
+    - name: Test code
+      run: go test -v .
