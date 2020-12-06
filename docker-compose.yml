@@ -30,8 +30,7 @@ services:
     volumes:
       - "./mongodb:/data/db"
   ldap:
-    build: ./docker/openldap
-    container_name: umr-openldap
+    build: ./docker/ldap
     restart: always
     command: bash -c '/usr/local/libexec/slapd -h "ldap:/// ldapi:///" && bash'
     ports:
